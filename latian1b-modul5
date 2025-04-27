@@ -1,0 +1,18 @@
+import 'dart:io';
+
+void main() {
+  stdout.write('Masukkan kalimat: ');
+  String kalimat = stdin.readLineSync()!;
+
+  // Membalik kalimat
+  String dibalik = kalimat.split('').reversed.join('');
+
+  print('Hasil = $dibalik');
+
+  // Mengecek apakah palindrom
+  if (kalimat.replaceAll(' ', '') == dibalik.replaceAll(' ', '')) {
+    print('Palindrom');
+  } else {
+    print('Bukan palindrom');
+  }
+}
