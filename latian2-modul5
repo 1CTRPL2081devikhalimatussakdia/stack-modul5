@@ -1,0 +1,42 @@
+import 'dart:io';
+
+class PalindromDenganStack {
+  // Fungsi untuk membalikkan kalimat menggunakan stack
+  String balikKalimat(String kalimat) {
+    List<String> stack = [];
+    // Menambahkan setiap karakter kalimat ke dalam stack
+    for (int i = 0; i < kalimat.length; i++) {
+      stack.add(kalimat[i]);
+    }
+
+    // Mengambil elemen dari stack untuk membalikkan kalimat
+    return stack.reversed.join('');
+  }
+
+  // Fungsi untuk memeriksa apakah kalimat adalah palindrom
+  bool cekPalindrom(String kalimat) {
+    String kalimatTerbalik = balikKalimat(kalimat);
+    return kalimat == kalimatTerbalik;
+  }
+}
+
+void main() {
+  var palindrom = PalindromDenganStack();
+
+  // Minta input kalimat dari pengguna
+  stdout.write('Masukkan kalimat: ');
+  String kalimat = stdin.readLineSync()!;
+
+  // Membalik kalimat
+  String kalimatTerbalik = palindrom.balikKalimat(kalimat);
+
+  // Tampilkan hasil pembalikan kalimat
+  print('Hasil = $kalimatTerbalik');
+
+  // Periksa apakah kalimat adalah palindrom
+  if (palindrom.cekPalindrom(kalimat)) {
+    print('Palindrom');
+  } else {
+    print('Bukan palindrom');
+  }
+}
