@@ -1,0 +1,34 @@
+import 'dart:collection';
+
+void main() {
+  // Membuat Queue dengan library bawaan Dart
+  Queue<int> queue = Queue<int>();
+
+  // Enqueue - Menambahkan data ke belakang antrian
+  queue.addLast(10);
+  queue.addLast(20);
+  queue.addLast(30);
+  queue.addLast(40);
+  queue.addLast(50);
+
+  print("Queue setelah enqueue:");
+  print(queue);
+
+  // Dequeue - Menghapus data dari depan antrian
+  int removedItem1 = queue.removeFirst();
+  int removedItem2 = queue.removeFirst();
+  print("Item yang di-dequeue: $removedItem1, $removedItem2");
+
+  print("Queue setelah dequeue:");
+  print(queue);
+
+  // Enqueue lagi
+  queue.addLast(60);
+  queue.addLast(70);
+
+  print("Queue setelah enqueue tambahan:");
+  print(queue);
+
+  // Melihat item paling depan (tanpa menghapus)
+  print("Item paling depan (peek): ${queue.first}");
+}
