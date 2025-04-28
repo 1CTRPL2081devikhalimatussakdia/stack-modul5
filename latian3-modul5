@@ -1,0 +1,48 @@
+class PostfixEval {
+  // Method untuk mengevaluasi ekspresi postfix
+  int evaluate(String expression) {
+    List<int> stack = [];
+
+    // Memisahkan ekspresi menjadi token
+    List<String> tokens = expression.split(' ');
+
+    for (var token in tokens) {
+      // Jika token adalah angka, push ke stack
+      if (int.tryParse(token) != null) {
+        stack.add(int.parse(token));
+      } else {
+        // Jika token adalah operator, pop dua angka dari stack
+        int b = stack.removeLast();
+        int a = stack.removeLast();
+        
+        // Menerapkan operator
+        switch (token) {
+          case '+':
+            stack.add(a + b);
+            break;
+          case '-':
+            stack.add(a - b);
+            break;
+          case '*':
+            stack.add(a * b);
+            break;
+          case '/':
+            stack.add(a ~/ b); // Pembagian bulat
+            break;
+          default:
+            throw Exception('Operator tidak dikenal: $token');
+        }
+      }
+    }
+
+    // Hasil akhir ada di stack
+    return stack.last;
+  }
+}
+
+void main() {
+  var evaluator = PostfixEval();
+  String expression = "4 3 5 * +"; // Ubah dengan ekspresi postfix yang diinginkan
+  int result = evaluator.evaluate(expression);
+  print('Hasil evaluasi dari ekspresi postfix "$expression" adalah: $result');
+}
